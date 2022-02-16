@@ -18,9 +18,9 @@ public:
         else{
             findstring(nums,i+1,n,s);
         }
-        if(s[i] == '1') s[i] = '0';
-        else{ s[i] = '1';}
-        findstring(nums,i+1,n,s);
+        // if(s[i] == '1') s[i] = '0';
+        // else{ s[i] = '1';}
+        // findstring(nums,i+1,n,s);
         
     }
     string findDifferentBinaryString(vector<string>& nums) {
