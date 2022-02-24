@@ -13,19 +13,28 @@ class Solution{
      // Function to find majority element in the array
     // a: input array
     // size: size of input array
-    int majorityElement(int a[], int size)
+    int majorityElement(int a[], int n)
     {
-        unordered_map<int, int> map;
-    for(int i=0;i<size;i++){
-        map[a[i]]++;
-    }
-    for(int i=0; i<size;i++)
-       {
-          if (map[a[i]] > size/2)
-          return a[i];
-       }
-       return -1;
-        
+        int major_index = 0,count=1;
+        for(int i=1;i<n;i++){
+            if(a[major_index] == a[i]){
+                count++;
+            }
+            else{
+                count--;
+            }
+            if(count == 0){
+                major_index = i;
+                count = 1;
+            }
+        }
+        int maj = a[major_index];
+        int cnt = 0;
+        for(int i=0;i<n;i++){
+            if(a[i] == maj) cnt++;
+        }
+        if(cnt>n/2)return maj;
+        else return -1;
         // your code here
         
     }
