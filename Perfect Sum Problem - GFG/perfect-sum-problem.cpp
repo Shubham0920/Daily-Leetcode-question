@@ -6,24 +6,25 @@ using namespace std;
 class Solution{
 
 	public:
-	#define mod 1000000007
+	#define mod 1000000007 
 	int perfectsum(int arr[],int n,int sum,vector<vector<int>> &dp){
-	    if( n == 0){
-	        return dp[n][sum] = sum == 0?1:0;
-	    }
 	    
-	    
-	    
+	   
+	    if(sum<0)
+	    return 0;
 	    if(dp[n][sum] != -1){
 	        return dp[n][sum]%mod;
 	    }
-	    if(arr[n-1] <= sum){
-	         return dp[n][sum] = (perfectsum(arr,n-1,sum-arr[n-1],dp)%mod + perfectsum(arr,n-1,sum,dp)%mod)%mod;
+	    
+	    if(n == 0 && sum == 0){
+	        return dp[n][sum] = 1;
 	    }
-	    else{
-	        return dp[n][sum] = perfectsum(arr,n-1,sum,dp)%mod;
-	    }
-	   
+	    
+	    if(n==0)
+	    return dp[n][sum]=0;
+	    
+	    
+	    return dp[n][sum] = (perfectsum(arr,n-1,sum-arr[n-1],dp)%mod + perfectsum(arr,n-1,sum,dp)%mod)%mod;
 	    
 	}
 	int perfectSum(int arr[], int n, int sum)
