@@ -22,10 +22,33 @@ class Solution {
             return dp[n][sum] = knapsack(s,n-1,sum,dp);
         }
     }
-    long long int count(int S[], int m, int n) {
+    long long int count(int s[], int m, int n) {
 
         vector<vector<long long int>> dp(m+1,vector<long long int>(n+1,-1));
-        return knapsack(S,m,n,dp);
+        for(int i=0;i<m+1;i++){
+            for(int j=0;j<n+1;j++){
+                if(i == 0 && j == 0){
+                    dp[i][j] = 1;
+                }
+                if(j == 0){
+                    dp[i][j] = 1;
+                }
+                if(i == 0){
+                    dp[i][j] = 0;
+                }
+            }
+        }
+        for(int i=1;i<m+1;i++){
+            for(int j=1;j<n+1;j++){
+                if(s[i-1] <= j){
+                    dp[i][j] = dp[i][j-s[i-1]]+dp[i-1][j];
+                }
+                else{
+                    dp[i][j] = dp[i-1][j];
+                }
+            }
+        }
+        return dp[m][n];
     }
 };
 
