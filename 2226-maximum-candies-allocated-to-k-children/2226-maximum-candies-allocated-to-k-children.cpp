@@ -2,8 +2,6 @@ class Solution {
 public:
     int maximumCandies(vector<int>& candies, long long k) {
         int n=candies.size();
-        // if(n==1 && candies[0]>k)return candies[0]/k;
-        // if(n==1 && candies[0]==k)return 1;
         long sum=0;
         for(int i=0;i<n;i++){
             sum+= candies[i];
