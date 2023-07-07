@@ -1,22 +1,21 @@
 class Solution {
 public:
     void sortColors(vector<int>& arr) {
-       int i, key, j; 
-        int n = arr.size();
-        for (i = 1; i < n; i++)
-        { 
-            key = arr[i]; 
-            j = i - 1; 
+        int low = 0, mid = 0, high = arr.size() - 1; // 3 pointers
 
-            /* Move elements of arr[0..i-1], that are 
-            greater than key, to one position ahead 
-            of their current position */
-            while (j >= 0 && arr[j] > key)
-            { 
-                arr[j + 1] = arr[j]; 
-                j = j - 1; 
-            } 
-            arr[j + 1] = key; 
-        }  
+    while (mid <= high) {
+        if (arr[mid] == 0) {
+            swap(arr[low], arr[mid]);
+            low++;
+            mid++;
+        }
+        else if (arr[mid] == 1) {
+            mid++;
+        }
+        else {
+            swap(arr[mid], arr[high]);
+            high--;
+        }
     }
+}
 };
