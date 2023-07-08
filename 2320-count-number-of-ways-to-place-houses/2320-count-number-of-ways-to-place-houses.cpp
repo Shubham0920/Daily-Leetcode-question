@@ -1,20 +1,19 @@
-
 class Solution {
 public:
 int mod=1e9+7;
-long long hope(int index1,int &n,vector<long long>&dp){
-    if(index1>=n)return 1;
-   if(dp[index1]!=-1)return dp[index1];
-    long long way1=0;
-    long long way2=0;
-    way1=hope(index1+1,n,dp)%mod;
-    way2=hope(index1+2,n,dp)%mod;
-    return dp[index1]=(way1+way2)%mod;
+int helper(int i,vector<int>&dp)
+{
+    if(i==0) return 1;
+    if(i<0) return 0;
+    if(dp[i]!=-1) return dp[i];
+    long long int take=helper(i-2,dp)%mod;
+    long long int non_take=helper(i-1,dp)%mod;
+    return dp[i]= (take+non_take)%mod;
 }
+
     int countHousePlacements(int n) {
-        vector<long long>dp(n+3,-1);
-        long long res=hope(0,n,dp)%mod;
-        long long answer=((res%mod)*(res%mod))%mod;
-        return answer;
+        vector<int>dp(n+2,-1);
+        long long int a=helper(n+1,dp);
+        return (a*a)%mod;
     }
 };
