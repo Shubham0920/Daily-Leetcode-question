@@ -8,34 +8,16 @@ using namespace std;
 
 class Solution {
 public:
-    int timer = 1;
-    // void dfs(int node,int parent,vector<int> adj[],vector<int> &vis,vector<int> &low,vector<int> &in,vector<vector<int>>&bridges){
-    //     vis[node] = 1;
-    //     low[node] = cnt;
-    //     in[node] = cnt;
-    //     cnt++;
-    //     for(auto it:adj[node]){
-    //         if(it == parent) continue;
-    //         if(vis[it] == 0){
-    //             low[node] = min(low[node],low[it]);
-    //             if(low[it]>in[it]){
-    //                 bridges.push_back({node,it});
-    //             }
-    //         }
-    //         else{
-    //             low[node] = min(low[node],low[it]);
-    //         }
-    //     }
-    // }
-    void dfs(int node, int parent, vector<int> &vis,
-             vector<int> adj[], int tin[], int low[], vector<vector<int>> &bridges) {
+    int cnt = 1;
+    void dfs(int node,int parent,vector<int> adj[],vector<int> &vis,int low[],int tin[],vector<vector<int>>&bridges){
         vis[node] = 1;
-        tin[node] = low[node] = timer;
-        timer++;
+        low[node] = cnt;
+        tin[node] = cnt;
+        cnt++;
         for (auto it : adj[node]) {
             if (it == parent) continue;
             if (vis[it] == 0) {
-                dfs(it, node, vis, adj, tin, low, bridges);
+                dfs(it, node, adj,vis, low, tin, bridges);
                 low[node] = min(low[it], low[node]);
                 // node --- it
                 if (low[it] > tin[node]) {
@@ -51,13 +33,37 @@ public:
             }
         }
     }
+    // void dfs(int node, int parent, vector<int> &vis,
+    //          vector<int> adj[], int tin[], int low[], vector<vector<int>> &bridges) {
+    //     vis[node] = 1;
+    //     tin[node] = low[node] = timer;
+    //     timer++;
+    //     for (auto it : adj[node]) {
+    //         if (it == parent) continue;
+    //         if (vis[it] == 0) {
+    //             dfs(it, node, vis, adj, tin, low, bridges);
+    //             low[node] = min(low[it], low[node]);
+    //             // node --- it
+    //             if (low[it] > tin[node]) {
+    //                 if(it>node)
+    //                 bridges.push_back({node,it});
+    //                 else{
+    //                     bridges.push_back({it,node});
+    //                 }
+    //             }
+    //         }
+    //         else {
+    //             low[node] = min(low[node], low[it]);
+    //         }
+    //     }
+    // }
 	vector<vector<int>>criticalConnections(int n, vector<int> adj[]){
 	    // Code here
 	    vector<int> vis(n, 0);
         int tin[n];
         int low[n];
         vector<vector<int>> bridges;
-        dfs(0, -1, vis, adj, tin, low, bridges);
+        dfs(0, -1, adj,vis, low, tin, bridges);
         sort(bridges.begin(),bridges.end());
         return bridges;
 	    
