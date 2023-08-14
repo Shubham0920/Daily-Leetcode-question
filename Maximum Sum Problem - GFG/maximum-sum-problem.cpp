@@ -23,7 +23,15 @@ class Solution
         {
             //code here.
             vector<int> dp(n+1,-1);
-            return solve(n,dp);
+            dp[0] = 0;
+            for(int i=1;i<=n;i++){
+                 int sum = 0;
+                sum+=solve(n/2,dp);
+                sum+=solve(n/3,dp);
+                sum+=solve(n/4,dp);
+                dp[n] = max(sum,i);
+            }
+            return dp[n];
            
         }
 };
