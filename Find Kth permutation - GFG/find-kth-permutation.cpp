@@ -13,7 +13,7 @@ class Solution
 public:
     string kthPermutation(int n, int k)
     {
-        // code her
+        // code here
         vector<int> nums;
         int fact = 1;
         for(int i=1;i<n;i++){
