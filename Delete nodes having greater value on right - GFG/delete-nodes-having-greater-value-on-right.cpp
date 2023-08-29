@@ -49,6 +49,7 @@ class Solution
     Node *compute(Node *head)
     {
         // your code goes here
+        // your code goes here
         if(head == nullptr){
             return  head;
         }
@@ -65,7 +66,6 @@ class Solution
         else{
             return head;
         }
-        
     }
     
 };
