@@ -17,9 +17,9 @@ public:
                 cnt++;
                 last = s[i];
             }
-            if(cnt>=k)return true;
+            // if(cnt>=k)return true;
         }
-        return false;
+        return cnt>=k;
     }
     int solve(int n, int k, vector<int> &s) {
     
