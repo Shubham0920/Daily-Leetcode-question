@@ -1,9 +1,12 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
-vector<int> find(int arr[], int n , int x )
+// } Driver Code Ends
+class Solution
+{
+    public:
+    vector<int> find(int arr[], int n , int x )
 {
     int s = 0,e = n-1;
     int first = -1;
@@ -42,7 +45,9 @@ vector<int> find(int arr[], int n , int x )
     
 }
 
-// { Driver Code Starts.
+};
+
+//{ Driver Code Starts.
 
 int main()
 {
@@ -56,11 +61,13 @@ int main()
         for(i=0;i<n;i++)
         cin>>arr[i];
         vector<int> ans;
-        ans=find(arr,n,x);
+        Solution ob;
+        ans=ob.find(arr,n,x);
         cout<<ans[0]<<" "<<ans[1]<<endl;
     }
     return 0;
 }
 
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
