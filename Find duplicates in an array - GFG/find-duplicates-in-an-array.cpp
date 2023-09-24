@@ -1,8 +1,8 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution{
   public:
     vector<int> duplicates(int arr[], int n) {
@@ -23,7 +23,9 @@ class Solution{
 };
 
 
-// { Driver Code Starts.
+
+
+//{ Driver Code Starts.
 int main() {
     int t;
     cin >> t;
@@ -39,4 +41,5 @@ int main() {
     }
     return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
